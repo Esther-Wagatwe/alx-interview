@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 '''Module to find Pascal's Triangle integers'''
+
+
 def pascal_triangle(n):
     '''
     Function to find Pascal's Triangle integers
