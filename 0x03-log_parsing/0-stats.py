@@ -20,25 +20,30 @@ def main():
 
     try:
         for line in sys.stdin:
-            parts = line.split()
-            if len(parts) < 7:
-                continue
-
-            file_size = int(parts[-1])
-            status_code = int(parts[-2])
-
-            total_size += file_size
-            if status_code in status_codes:
-                status_codes[status_code] += 1
-
             line_count += 1
+            parts = line.split()
+
+            try:
+                status_code = int(parts[-2])
+                if status_code in status_codes:
+                    status_codes[status_code] += 1
+            except (ValueError, IndexError):
+                pass
+
+            try:
+                total_size += int(parts[-1])
+            except (IndexError, ValueError):
+                pass
 
             if line_count % 10 == 0:
                 print_stats(total_size, status_codes)
 
-    except KeyboardInterrupt:
         print_stats(total_size, status_codes)
 
+
+    except KeyboardInterrupt:
+        print_stats(total_size, status_codes)
+        raise
 
 if __name__ == "__main__":
     main()
