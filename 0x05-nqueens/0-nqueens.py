@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 """module that solves the nqueeens puzzle"""
 import sys
 
