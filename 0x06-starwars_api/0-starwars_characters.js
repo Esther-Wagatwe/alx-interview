@@ -20,14 +20,20 @@ request(url, { json: true }, (err, res, body) => {
   }
 
   const characterUrls = body.characters || [];
-  characterUrls.forEach(characterUrl => {
-    request(characterUrl, { json: true }, (err, res, body) => {
+  function fetchCharacter (index) {
+    if (index >= characterUrls.length) {
+      return;
+    }
+
+    request(characterUrls[index], { json: true }, (err, res, body) => {
       if (err) {
         console.error('Error:', err);
         process.exit(1);
       }
 
       console.log(body.name);
+      fetchCharacter(index + 1);
     });
-  });
+  }
+  fetchCharacter(0);
 });
