@@ -6,13 +6,13 @@
 def island_perimeter(grid):
     """
     Calculate the perimeter of an island represented in a grid.
-    
+
     Parameters:
     grid (list of list of int): A rectangular grid containing integers
                                  (0 for water and 1 for land).
 
     Returns:
-    int: The perimeter of the island. If the grid contains no land, 
+    int: The perimeter of the island. If the grid contains no land,
          the perimeter is 0.
     """
     rows = len(grid)
